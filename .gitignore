@@ -1,3 +1,5 @@
 __pycache__
 
 settings_secret.py
+
+db.sqlite3
