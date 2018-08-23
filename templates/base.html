@@ -1,5 +1,49 @@
 <!-- Generic template inherited by other templates -->
-<title>{% block title %}{% endblock %}Foresite</title>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %}Foresite</title>
+    <meta charset="utf-8"/>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}"/>
+  </head>
 
-{% block content %}
-{% endblock %}
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar is-primary" role="navigation">
+      <div class="navbar-brand">
+        <a class="navbar-burger" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+        </div>
+
+        <div class="navbar-end">
+        {% if user.is_authenticated %}
+          <a class="navbar-item">
+            Welcome, {{ user.username }}
+          </a>
+          <a class="navbar-item" href="{% url 'logout' %}">
+            Log Out
+          </a>
+        {% else %}
+          <a class="navbar-item" href="{% url 'login' %}">
+            Log In
+          </a>
+          <a class="navbar-item" href="{% url 'signup' %}">
+            Sign Up
+          </a>
+        {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
