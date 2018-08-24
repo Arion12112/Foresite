@@ -3,10 +3,37 @@
 {% block title %}Log in | {% endblock %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+
+<!-- Login Form -->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            Log in
+          </p>
+        </header>
+        <div class="card-content">
+          <form method="post">
+          {% csrf_token %}
+          <div class="content">
+            <div class="field">
+              <div class="control">
+                {{ form.as_p }}
+              </div>
+            </div>
+          </div>
+          <button class="button is-primary" type="submit">
+            Submit
+          </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Login Form end -->
+
+
 {% endblock %}

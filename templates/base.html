@@ -24,24 +24,25 @@
         </div>
 
         <div class="navbar-end">
-        {% if user.is_authenticated %}
-          <a class="navbar-item">
-            Welcome, {{ user.username }}
-          </a>
-          <a class="navbar-item" href="{% url 'logout' %}">
-            Log Out
-          </a>
-        {% else %}
-          <a class="navbar-item" href="{% url 'login' %}">
-            Log In
-          </a>
-          <a class="navbar-item" href="{% url 'signup' %}">
-            Sign Up
-          </a>
-        {% endif %}
+          {% if user.is_authenticated %}
+            <a class="navbar-item">
+              Welcome, {{ user.username }}
+            </a>
+            <a class="navbar-item" href="{% url 'logout' %}">
+              Log Out
+            </a>
+          {% else %}
+            <a class="navbar-item" href="{% url 'login' %}">
+              Log In
+            </a>
+            <a class="navbar-item" href="{% url 'signup' %}">
+              Sign Up
+            </a>
+          {% endif %}
         </div>
       </div>
     </nav>
+    <!-- Navigation Bar end -->
 
     {% block content %}
     {% endblock %}
