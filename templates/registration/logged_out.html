@@ -3,4 +3,25 @@
 {% block title %}Logged out | {% endblock %}
 
 {% block content %}
+
+<!-- Logout Form -->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="card">
+        <div class="card-content">
+          <h1 class="title">
+            You have logged out successfully!
+          </h1>
+          <br>
+          <h1 class="subtitle">
+            To go back to the front page, click <a href="{% url 'index' %}">here</a>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Logout Form end -->
+
 {% endblock %}
