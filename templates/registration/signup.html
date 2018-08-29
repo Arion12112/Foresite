@@ -3,4 +3,42 @@
 {% block title %}Sign up | {% endblock %}
 
 {% block content %}
+
+<!-- Signup Form -->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            Sign up
+          </p>
+        </header>
+        <div class="card-content">
+          <form method="post">
+            {% csrf_token %}
+            <div class="content">
+              <div class="field">
+                <div class="control">
+                  {{ form.username }}
+                </div>
+              </div>
+              <br>
+              <div class="field">
+                <div class="control">
+                  {{ form.password }}
+                </div>
+              </div>
+            </div>
+            <button class="button is-primary" type="submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Signup Form end -->
+
 {% endblock %}
