@@ -2,27 +2,40 @@
 
 {% block content %}
 
-<!-- List of uploaded documents -->
-{% if documents %}
-<ul>
-{% for document in documents %}
-  <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
-{% endfor %}
-</ul>
-{% else %}
-  <p>No documents.</p>
-{% endif %}
-
 <!-- Upload form. Note enctype attribute! -->
-<form action="{% url 'list' %}" method="post" enctype="multipart/form-data">
-{% csrf_token %}
-  <p>{{ form.non_field_errors }}</p>
-  <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-  <p>
-    {{ form.docfile.errors }}
-    {{ form.docfile }}
-  </p>
-  <p><input type="submit" value="Upload" /></p>
-</form>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            Upload CSV File
+          </p>
+        </header>
+        <div class="card-content">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="content">
+              <div class="field">
+                <div class="control">
+                  {{ form.csv_name }}
+                </div>
+              </div>
+              <br>
+              <div class="field">
+                <div class="control">
+                  {{ form.csv_file }}
+                </div>
+              </div>
+            </div>
+            <button class="button is-primary" type="submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock content %}

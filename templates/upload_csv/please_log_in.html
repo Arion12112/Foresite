@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Failed | {% endblock %}
+
+{% block content %}
+
+<!-- Logout Form -->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="card">
+        <div class="card-content">
+          <h1 class="title">
+            You must log in to use this feature.
+          </h1>
+          <br>
+          <h1 class="subtitle">
+            To log in, click <a href="{% url 'login' %}">here</a>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Logout Form end -->
+
+{% endblock %}
