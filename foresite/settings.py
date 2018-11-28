@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'upload_csv',
+    'processed_data',
 ]
 
 MIDDLEWARE = [

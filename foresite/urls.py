@@ -26,7 +26,7 @@ urlpatterns = [
     path('signup/', views.SignupView.as_view(), name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('upload_csv/', include('upload_csv.urls')),
-    # path('processed_data/', include('processed_data.urls')),
+    path('processed_data/', include('processed_data.urls')),
 ]
 
 if settings.DEBUG:

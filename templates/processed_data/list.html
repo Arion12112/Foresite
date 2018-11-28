@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="card">
+        <div class="card-content">
+          <h1 class="title">
+            {{ user }}'s CSV Uploads
+          </h1>
+          {% for csv_upload in csv_uploads %}
+            <br>
+            <h1 class="subtitle">
+              <a href="{% url 'detail' csv_upload.csv_name %}">
+                {{ csv_upload.csv_name }} -
+                {{ csv_upload.data_processed|yesno:"Ready,Processing"}}
+              </a>
+            </h1>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

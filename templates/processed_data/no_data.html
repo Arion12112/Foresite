@@ -1,27 +1,27 @@
 {% extends "base.html" %}
 
-{% block title %}Upload Successful | {% endblock %}
+{% block title %}Upload Failed | {% endblock %}
 
 {% block content %}
 
-<!-- Upload Csv Success Form -->
+<!-- No Data Form -->
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
       <div class="card">
         <div class="card-content">
           <h1 class="title">
-            You have successfully uploaded your csv file!
+            You don't have any data uploaded or it is not processed yet.
           </h1>
           <br>
           <h1 class="subtitle">
-            To go back to the front page, click <a href="{% url 'index' %}">here</a>
+            To upload a csv file, click <a href="{% url 'upload' %}">here</a>
           </h1>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- Upload Csv Success Form end -->
+<!-- No Data Form end -->
 
 {% endblock %}
