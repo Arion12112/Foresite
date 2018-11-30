@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Upload Failed | {% endblock %}
+{% block title %}Not Processed | {% endblock %}
 
 {% block content %}
 
@@ -11,11 +11,11 @@
       <div class="card">
         <div class="card-content">
           <h1 class="title">
-            You don't have any data uploaded or it is not processed yet.
+            Your data isn't processed yet.
           </h1>
           <br>
           <h1 class="subtitle">
-            To upload a csv file, click <a href="{% url 'upload' %}">here</a>
+            <a href="{% url 'processed' %}">Return to CSV upload list</a>
           </h1>
         </div>
       </div>

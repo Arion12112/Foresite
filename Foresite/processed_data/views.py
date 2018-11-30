@@ -17,7 +17,7 @@ def processed_data(request):
             }
             return render(request, 'processed_data/list.html', context=context_data)
         else:
-            return render(request, 'processed_data/no_data.html')
+            return render(request, 'processed_data/no_data_uploaded.html')
 
 
 def detail(request, csv_name):
@@ -31,6 +31,6 @@ def detail(request, csv_name):
                 processed_data = ProcessedData.objects.get(upload_csv_processed=csv_processed)
                 return render(request, 'processed_data/detail.html', {'processed_data': processed_data})
             else:
-                return render(request, 'processed_data/no_data.html')
+                return render(request, 'processed_data/no_data_processed.html')
         else:
-            return render(request, 'processed_data/no_data.html')
+            return render(request, 'processed_data/no_data_processed.html')

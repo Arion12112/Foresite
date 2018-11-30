@@ -1,27 +1,27 @@
 {% extends "base.html" %}
 
-{% block title %}Not Logged In | {% endblock %}
+{% block title %}No Uploads | {% endblock %}
 
 {% block content %}
 
-<!-- Login Route Form -->
+<!-- No Data Form -->
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
       <div class="card">
         <div class="card-content">
           <h1 class="title">
-            You must log in to use this feature.
+            You don't have any data uploaded.
           </h1>
           <br>
           <h1 class="subtitle">
-            <a href="{% url 'login' %}">Log In</a>
+            <a href="{% url 'upload' %}">Upload a CSV file</a>
           </h1>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- Login Route Form end -->
+<!-- No Data Form end -->
 
 {% endblock %}

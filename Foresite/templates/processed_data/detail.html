@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Upload Successful | {% endblock %}
+{% block title %}Upload Forecast | {% endblock %}
 
 {% block content %}
 
@@ -15,37 +15,29 @@
           <h1 class="title">
             7 day forecast generated from your data!
           </h1>
-          <br>
           <h1 class="subtitle">
             First Day: {{ processed_data.day_1 }}
           </h1>
-          <br>
           <h1 class="subtitle">
             Second Day: {{ processed_data.day_2 }}
           </h1>
-          <br>
           <h1 class="subtitle">
             Third Day: {{ processed_data.day_3 }}
           </h1>
-          <br>
           <h1 class="subtitle">
             Fourth Day: {{ processed_data.day_4 }}
           </h1>
-          <br>
           <h1 class="subtitle">
             Fifth Day: {{ processed_data.day_5 }}
           </h1>
-          <br>
           <h1 class="subtitle">
             Sixth Day: {{ processed_data.day_6 }}
           </h1>
-          <br>
           <h1 class="subtitle">
             Seventh Day: {{ processed_data.day_7 }}
           </h1>
-          <br>
           <h1 class="subtitle">
-            Image: <img src="{% static processed_data.image_path %}"/>
+            <img src="{% static processed_data.image_path %}"/>
           </h1>
         </div>
       </div>
