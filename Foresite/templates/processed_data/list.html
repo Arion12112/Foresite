@@ -15,8 +15,8 @@
           {% for csv_upload in csv_uploads %}
             <br>
             <h1 class="subtitle">
-              <a href="{% url 'detail' csv_upload.csv_name %}">
-                {{ csv_upload.csv_name }} -
+              <a href="{% url 'detail' csv_upload.csv_file %}">
+                {{ csv_upload.csv_file }} -
                 {{ csv_upload.data_processed|yesno:"Ready,Processing"}}
               </a>
             </h1>

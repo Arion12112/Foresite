@@ -1,5 +1,8 @@
 __pycache__
 *.pyc
+*.h5
+*.png
+*.txt
 
 settings_secret.py
 

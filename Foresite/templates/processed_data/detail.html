@@ -15,26 +15,27 @@
           <h1 class="title">
             7 day forecast generated from your data!
           </h1>
+          <br>
           <h1 class="subtitle">
-            First Day: {{ processed_data.day_1 }}
+            First Day: {{ processed_data.day_1|floatformat:0 }}
           </h1>
           <h1 class="subtitle">
-            Second Day: {{ processed_data.day_2 }}
+            Second Day: {{ processed_data.day_2|floatformat:0 }}
           </h1>
           <h1 class="subtitle">
-            Third Day: {{ processed_data.day_3 }}
+            Third Day: {{ processed_data.day_3|floatformat:0 }}
           </h1>
           <h1 class="subtitle">
-            Fourth Day: {{ processed_data.day_4 }}
+            Fourth Day: {{ processed_data.day_4|floatformat:0 }}
           </h1>
           <h1 class="subtitle">
-            Fifth Day: {{ processed_data.day_5 }}
+            Fifth Day: {{ processed_data.day_5|floatformat:0 }}
           </h1>
           <h1 class="subtitle">
-            Sixth Day: {{ processed_data.day_6 }}
+            Sixth Day: {{ processed_data.day_6|floatformat:0 }}
           </h1>
           <h1 class="subtitle">
-            Seventh Day: {{ processed_data.day_7 }}
+            Seventh Day: {{ processed_data.day_7|floatformat:0 }}
           </h1>
           <h1 class="subtitle">
             <img src="{% static processed_data.image_path %}"/>

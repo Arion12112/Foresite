@@ -13,6 +13,7 @@ def upload_csv_file(request):
                 file = form.save(commit=False)
                 file.user = request.user
                 file.csv_file = request.FILES['csv_file']
+                file.csv_name = request.FILES['csv_file'].name
                 file.save()
                 return render(request, 'upload_csv/upload_csv_success.html',
                               {'form': form})

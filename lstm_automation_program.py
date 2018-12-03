@@ -11,13 +11,14 @@ from sklearn.preprocessing import MinMaxScaler
 import lstm_neural_network
 
 numpy.random.seed(7)
-training_length = 600
+training_length_percentage = .75
 minimum_seasonality = 7
 scaler = MinMaxScaler(feature_range=(0, 1))
 forecast_length = 7
 
 while True:
 
+    # Check database to see if CSV was uploaded
     csv_name = None
     while csv_name is None:
         conn = sqlite3.connect('Foresite/db.sqlite3')
@@ -32,18 +33,27 @@ while True:
             csv_name = None
         conn.close()
 
-    csv_path = "media/test/"
-    txt_type = ".txt"
-    csv_file_path = csv_path + csv_name + txt_type
+    # Remove file extension from csv_name
+    full_csv_name = csv_name
+    csv_name = os.path.splitext(csv_name)[0]
 
-    processed_data_path = "test/"
-    processed_file_data_path = processed_data_path + csv_name + txt_type
+    # Find file path of CSV file
+    csv_file_path = "media/" + csv_name + ".txt"
 
     model_path = "model.h5"
 
-    png_type = ".png"
-    processed_image_path = processed_data_path + csv_name + png_type
+    processed_image_path = "csv_image/" + csv_name + ".png"
     processed_image_path_for_save = "Foresite/static/" + processed_image_path
+
+    # Get length of CSV csv file
+    csv_length = len(pandas.read_csv(csv_file_path)) + 1
+
+    # Split 75% of csv for training and 25% for validation
+    training_length = int(csv_length * training_length_percentage)
+
+    # Check if CSV file is in correct format
+
+    # LSTM program
 
     impressions = pandas.read_csv(csv_file_path, usecols=[0], header=None)
     impressions_data = impressions.values
@@ -72,14 +82,21 @@ while True:
 
     print("Make prediction and display it\n")
     prediction = model.predict_on_batch(
-        x_data[training_length:(training_length+50), :, :])
+        x_data[(training_length+1):(training_length+(csv_length-training_length)), :, :])
     prediction = scaler.inverse_transform(prediction)
     actual = scaler.inverse_transform(y_data)
 
-    pyplot.plot(actual[training_length+6:(training_length+50+6), 0], color='blue')
-    pyplot.plot(prediction[:, 6], color='red')
+    pyplot.title("Web Traffic Data")
+    pyplot.xlabel("Number of days")
+    pyplot.ylabel("Number of visitors")
+
+    pyplot.plot(actual[training_length+6:(training_length +
+                                          (csv_length-training_length)+6), 0], color='blue', label='actual')
+    pyplot.plot(prediction[:, 6], color='red', label='prediction')
+    pyplot.legend(loc='upper left')
 
     pyplot.savefig(processed_image_path_for_save, bbox_inches='tight')
+    pyplot.close()
 
     conn = sqlite3.connect('Foresite/db.sqlite3')
     c = conn.cursor()
@@ -88,16 +105,8 @@ while True:
     c.execute(
         'INSERT INTO "processed_data_processeddata" VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);', params1)
 
-    params2 = (id, csv_name)
-    c.execute('UPDATE "upload_csv_csvupload" SET data_processed="1" WHERE id=? AND csv_name=?;', params2)
+    params2 = (id, full_csv_name)
+    c.execute('UPDATE "upload_csv_csvupload" SET data_processed="1" WHERE id=? AND csv_file=?;', params2)
 
     conn.commit()
     conn.close()
-    # print(csv_file_path)
-    # print(processed_file_data_path)
-    # print(processed_image_path)
-    #
-    # pyplot.plot(1, 2, 3, 4, color='blue')
-    # pyplot.plot(1, 1, 1, 1, color='red')
-    #
-    # pyplot.savefig(processed_image_path, bbox_inches='tight')
