@@ -1,5 +1,6 @@
 import os
 import sqlite3
+# import MySQLdb
 os.environ["MKL_THREADING_LAYER"] = "GNU"
 
 import numpy
@@ -22,6 +23,8 @@ while True:
     csv_name = None
     while csv_name is None:
         conn = sqlite3.connect('Foresite/db.sqlite3')
+        # conn = MySQLdb.connect(host="foresite-db.ce1e79fclwa2.us-west-1.rds.amazonaws.com",
+        #                       user="PricelessAntonio", passwd="CMPE195BSeniorProject", db="foresitedb", port=3306)
         c = conn.cursor()
 
         c.execute('SELECT * FROM "upload_csv_csvupload" WHERE data_processed="0" ORDER BY timestamp ASC;')
