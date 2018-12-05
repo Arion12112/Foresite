@@ -8,6 +8,7 @@ import pandas
 from matplotlib import pyplot
 from keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
+import platform
 
 import lstm_neural_network
 
@@ -16,6 +17,7 @@ training_length_percentage = .75
 minimum_seasonality = 7
 scaler = MinMaxScaler(feature_range=(0, 1))
 forecast_length = 7
+print(platform.python_version())
 
 while True:
 
@@ -23,8 +25,7 @@ while True:
     csv_name = None
     while csv_name is None:
         conn = sqlite3.connect('Foresite/db.sqlite3')
-        # conn = MySQLdb.connect(host="foresite-db.ce1e79fclwa2.us-west-1.rds.amazonaws.com",
-        #                       user="PricelessAntonio", passwd="CMPE195BSeniorProject", db="foresitedb", port=3306)
+
         c = conn.cursor()
 
         c.execute('SELECT * FROM "upload_csv_csvupload" WHERE data_processed="0" ORDER BY timestamp ASC;')
